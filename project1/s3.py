@@ -1,6 +1,9 @@
-
+"""
+This project is aimed at practicing a basic ETL using aws s3 bucket...
+"""
 import boto3
 import pandas as pd
+import fastparquet
 
 
 def main():
@@ -12,7 +15,7 @@ def main():
     s3.download_file('blossom-data-engs', 'free-7-million-company-dataset.zip', 'company_data.zip')
 
     # reading the file using pandas
-    data = pd.read_csv('company_data.zip', index_col=0, compression='gzip')
+    data = pd.read_csv('company_data.zip', compression='gzip')
 
     # removing the rows that have null values in the domain column...
     data.dropna(subset=['domain'], inplace=True)
