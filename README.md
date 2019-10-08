@@ -1,1 +1,1 @@
-"# This repo contains all projects done under the blossom Academy engineering course" 
+This repo contains all projects done under the Blossom Academy engineering course
