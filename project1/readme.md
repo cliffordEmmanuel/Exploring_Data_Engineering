@@ -1,4 +1,4 @@
-# Project1: Extract Transform Load(ETL) with Amazon S3
+## Extract Transform Load(ETL) with Amazon S3
 
 This was aimed at building a basic **ETL pipeline** to **read data** from a source, **transform it** and **load the output** into the cloud.<br>
 *The tools used were:*
