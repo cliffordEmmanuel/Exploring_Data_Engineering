@@ -1,4 +1,4 @@
-# Project2: Batch Processing for Data Mining
+# Batch Processing for Data Mining
 
 This was aimed at using **pyspark** for a **text mining** job.<br>
 *Tools used were:*
