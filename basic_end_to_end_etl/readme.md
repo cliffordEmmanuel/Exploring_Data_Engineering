@@ -1,4 +1,4 @@
-# Project3: End to End Extract Transform Load(ETL) Pipeline
+# End to End Extract Transform Load(ETL) Pipeline
 
 This project completed a basic end to end ETL pipeline for a basic data processing task
 *Tools used were:*
