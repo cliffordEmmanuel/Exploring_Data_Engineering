@@ -1,9 +1,12 @@
 """
-This project is aimed at practicing a basic ETL using aws s3 bucket...
+This project is aimed at practicing a basic ETL using aws s3 bucket.
+It involves: 
+    - downloading data from an s3 bucket
+    - performing some transformation
+    - uploading the transformed data in two different file format
 """
 import boto3
 import pandas as pd
-
 
 
 def main():
