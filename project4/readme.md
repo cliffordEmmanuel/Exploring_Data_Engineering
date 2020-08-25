@@ -1,4 +1,4 @@
-# Project4: Web Scrapping
+# Project4: Single page Web Scrapping 
 This project was aimed at scrapping data from a real estate website: [meqasa](www.meqasa.com)
 *Tools used:*
 - **jupyter lab**
