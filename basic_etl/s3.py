@@ -3,7 +3,7 @@ This project is aimed at practicing a basic ETL using aws s3 bucket...
 """
 import boto3
 import pandas as pd
-import fastparquet
+
 
 
 def main():
