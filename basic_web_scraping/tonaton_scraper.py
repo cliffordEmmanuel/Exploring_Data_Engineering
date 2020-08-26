@@ -89,6 +89,7 @@ def scrape_data(url, number_of_pages):
     print('Scraping Complete!!\nFile Saved')
 
 if __name__ == "__main__":
+    scraped_data_df = pd.DataFrame([])
     url = 'https://www.tonaton.com/en/ads/ghana/electronics'
 
     number_of_pages = int(input('Enter the number of pages to be scraped...'))

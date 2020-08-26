@@ -1,5 +1,5 @@
 # Web Scrapping without an API
-This script provides scrapes an eccomerce platform: [tonaton](https://tonaton.com/en) for ads on electronic devices. Results are saved into a csv file for further analysis.
+This script scrapes an e-comerce platform: [tonaton](https://tonaton.com/en) for ads on electronic devices. Results are saved into a csv file for further analysis.
 
 *Tools used:*
 - **jupyter lab**
