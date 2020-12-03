@@ -18,16 +18,23 @@ search_key = "endsars -filter:retweets"  # to filter retweets...
 
 
 
-def scrapeTweets(search_key, number_of_tweets, number_of_requests):
+def scrapeTweets(search_key, number_of_tweets, number_of_requests, date_until):
     """"downloads a specified number of tweets based on the search key by making a specified number of calls to the standard twitter  search api endpoint."""
     
     tweets_df = pd.DataFrame([])
     tweets_counter = 0
-    # working with the standard api rate limitations
-    # you can make up to 450 requests in a 15 minute time window.
-    # a single request returns up to 100 tweets
 
     run_start = time.time()
+
+    # getting the first oldest tweet to work around duplicate tweets.
+
+    tweets = tweepy.Cursor( api.search, 
+                                q=search_key,
+                                lang="en", 
+                                until= date_until).items(100)
+    id_ = [tweet for tweet in tweets][-1].id_str
+
+    
     for request in range(number_of_requests):
         # this returns tweets bundled into a iterator object
         call_start_time = time.time()
@@ -37,9 +44,12 @@ def scrapeTweets(search_key, number_of_tweets, number_of_requests):
                                 count=100, 
                                 wait_on_rate_limit=True, 
                                 wait_on_rate_limit_notify=True,
-                                until='2020-11-28').items(number_of_tweets)
-        
+                                until=date_until,
+                                max_id=id_).items(number_of_tweets)
+    
+
         tweets_list = [tweet for tweet in tweets]
+        id_ = tweets_list[-1].id_str
 
         tweet_created_at_list = []
         tweet_id_list = []
@@ -107,16 +117,18 @@ def scrapeTweets(search_key, number_of_tweets, number_of_requests):
     print(f"*******************************************************")
     print(f"Run took {round((run_end-run_start)/60,2)} mins to download {tweets_counter} tweets!!")
     print(f"*******************************************************")
-    print("Waiting for 15 mins to make the next run...")
+    # print("Waiting for 15 mins to make the next run...")
     # time.sleep(920) 
 
     return tweets_df
 
-result = scrapeTweets(search_key,100,5)
+result = scrapeTweets(search_key,1000,100,'2020-12-02')
+# for testing
 
+print(f'{result.tweet_id.nunique()}, {result.shape}, {result.tweet_created_at.min()}')
 print("Saving data...")
 filename = f'tweets_downloaded_{time.strftime("%Y%m%d_%H%M%S",time.localtime())}.csv'
 result.to_csv(filename)
 print("data saved!!...")
 
-print(result.tweet_id.value_counts())
+# print(result.tweet_id.value_counts())
